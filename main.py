@@ -4,7 +4,20 @@ import os
 from io import BytesIO
 from streamlit_option_menu import option_menu
 from pydub import AudioSegment
+import pickle
+import numpy as np
 
+# Function to load the model and scaler
+@st.cache(allow_output_mutation=True)
+def load_model_and_scaler():
+    with open("pipe.pkl", "rb") as f:
+        loaded_model = pickle.load(f)
+    with open("scaler.pkl", "rb") as f:
+        scaler = pickle.load(f)
+    return loaded_model, scaler
+
+# Load the model and scaler
+loaded_model, scaler = load_model_and_scaler()
 
 # Navigasi sidebar
 with st.sidebar:
