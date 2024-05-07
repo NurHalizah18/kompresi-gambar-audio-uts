@@ -1,10 +1,9 @@
 import streamlit as st
 from PIL import Image
 from pydub import AudioSegment
-from io import BytesIO
+import os
 
-AudioSegment.set_appname("C:\\FFmpeg\\ffmpeg-2024-04-29-git-cf4af4bca0-full_build\\bin\\ffmpeg.exe")
-AudioSegment.set_appname("C:\\FFmpeg\\ffmpeg-2024-04-29-git-cf4af4bca0-full_build\\bin\\ffprobe.exe")
+os.environ["PATH"] += os.pathsep + "C:\FFmpeg\ffmpeg-2024-04-29-git-cf4af4bca0-full_build\bin"
 
 # Fungsi untuk melakukan kompresi gambar
 def compress_image(image, quality):
