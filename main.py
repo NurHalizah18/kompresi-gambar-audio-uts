@@ -4,6 +4,10 @@ from pydub import AudioSegment
 from io import BytesIO
 import os
 
+import sys
+sys.path.append('C:\\FFmpeg\\ffmpeg-2024-04-29-git-cf4af4bca0-full_build\\bin')
+
+
 # Fungsi untuk melakukan kompresi gambar
 def compress_image(image, quality):
     img = image.copy()
@@ -14,7 +18,7 @@ def compress_image(image, quality):
 # Fungsi untuk melakukan kompresi audio
 def compress_audio(audio_bytes, bitrate='64k'):
     audio_buf = BytesIO(audio_bytes)
-    audio_buf.seek(0)  # Reset pointer position to the beginning of the buffer
+    audio_buf.seek(0) 
     try:
         audio = AudioSegment.from_file(audio_buf, format="mp3")
         compressed_audio_buf = BytesIO()
