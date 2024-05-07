@@ -4,10 +4,11 @@ from pydub import AudioSegment
 from io import BytesIO
 import os
 
+AudioSegment.ffprobe = "C:\\FFmpeg\\ffmpeg-2024-04-29-git-cf4af4bca0-full_build\\bin\\ffprobe.exe"
+
 os.environ["PATH"] += os.pathsep + "C:\\FFmpeg\\ffmpeg-2024-04-29-git-cf4af4bca0-full_build\\bin"
 
 AudioSegment.ffmpeg = "C:\\FFmpeg\\ffmpeg-2024-04-29-git-cf4af4bca0-full_build\\bin\\ffmpeg.exe"
-AudioSegment.ffprobe = "C:\\FFmpeg\\ffmpeg-2024-04-29-git-cf4af4bca0-full_build\\bin\\ffprobe.exe"
 
 # Fungsi untuk melakukan kompresi gambar
 def compress_image(image, quality):
