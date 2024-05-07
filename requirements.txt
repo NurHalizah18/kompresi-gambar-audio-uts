@@ -1,6 +1,7 @@
 blobfile==2.1.1
 filelock==3.14.0
 ffmpeg
+ffprobe
 lxml==4.9.4
 pycryptodomex==3.20.0
 pydub==0.25.1
