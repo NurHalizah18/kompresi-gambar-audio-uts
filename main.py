@@ -12,10 +12,15 @@ def compress_image(image, quality):
 
 # Fungsi untuk melakukan kompresi audio
 def compress_audio(audio_bytes, bitrate='64k'):
-    audio = AudioSegment.from_file(BytesIO(audio_bytes), format="mp3")
-    compressed_audio_buf = BytesIO()
-    audio.export(compressed_audio_buf, format="mp3", bitrate=bitrate)
-    return compressed_audio_buf.getvalue()
+    audio_buf = BytesIO(audio_bytes)
+    audio_buf.seek(0)  # Reset pointer position to the beginning of the buffer
+    try:
+        audio = AudioSegment.from_file(audio_buf, format="mp3")
+        compressed_audio_buf = BytesIO()
+        audio.export(compressed_audio_buf, format="mp3", bitrate=bitrate)
+        return compressed_audio_buf.getvalue()
+    except Exception as e:
+        st.error(f"Error: {e}")
 
 
 # Fungsi untuk menampilkan tombol unduh
@@ -67,14 +72,13 @@ if selected == 'Kompresi Audio':
         
         if st.button('Kompresi'):
             compressed_audio = compress_audio(uploaded_file.getvalue())
-            
-            st.audio(compressed_audio, format='audio/mp3', start_time=0)
-            
-            st.download_button(
-                label="Unduh Audio Kompresi",
-                data=compressed_audio,
-                file_name="compressed_audio.mp3",
-                mime="audio/mp3"
-            )
-            
-            st.success("Kompresi audio berhasil!")
+            if compressed_audio:
+                st.audio(compressed_audio, format='audio/mp3', start_time=0)
+                
+                st.download_button(
+                    label="Unduh Audio Kompresi",
+                    data=compressed_audio,
+                    file_name="compressed_audio.mp3",
+                    mime="audio/mp3"
+                )
+                st.success("Kompresi audio berhasil!")
