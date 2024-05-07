@@ -12,7 +12,7 @@ def compress_image(image, quality):
 
 # Fungsi untuk melakukan kompresi audio
 def compress_audio(audio_bytes, bitrate='64k'):
-    audio = AudioSegment.from_file(BytesIO(audio_bytes))
+    audio = AudioSegment.from_file(BytesIO(audio_bytes), format="mp3")
     compressed_audio_buf = BytesIO()
     audio.export(compressed_audio_buf, format="mp3", bitrate=bitrate)
     return compressed_audio_buf.getvalue()
