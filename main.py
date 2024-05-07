@@ -4,10 +4,6 @@ from pydub import AudioSegment
 from io import BytesIO
 import os
 
-# Tentukan lokasi ffprobe
-os.environ["FFPROBE_PATH"] = "C:/ffmpeg/ffmpeg-2024-04-29-git-cf4af4bca0-full_build/bin/ffprobe.exe"
-
-
 # Fungsi untuk melakukan kompresi gambar
 def compress_image(image, quality):
     img = image.copy()
