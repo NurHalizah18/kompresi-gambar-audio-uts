@@ -66,7 +66,7 @@ if selected == 'Kompresi Audio':
     st.title('Kompresi Audio')
     st.write("Muat audio dan kompres dengan kualitas tertentu.")
 
-    uploaded_file = st.file_uploader("Pilih file audio", type=["mp3", "wav"], accept_multiple_files=False)
+    uploaded_file = st.file_uploader("Pilih file audio", type=["mp3"], accept_multiple_files=False)
 
     if uploaded_file is not None:
         st.write('File yang diunggah:', uploaded_file.name)
